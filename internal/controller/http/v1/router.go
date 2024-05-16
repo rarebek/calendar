@@ -23,7 +23,6 @@ import (
 // @in header
 // @name Authorization
 // @version     1.0
-// @host        localhost:8080
 func NewRouter(handler *gin.Engine, l logger.Interface, u usecase.User, e usecase.Event, redis *redis.Client) {
 	// Options
 	handler.Use(gin.Logger())

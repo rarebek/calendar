@@ -31,16 +31,16 @@ services:
       - MINIO_ROOT_PASSWORD=nodirbek
       - MINIO_DEFAULT_BUCKETS=files
 
-  app:
-    build: .
-    container_name: app
-    image: app
-    environment:
-      PG_URL: 'postgres://postgres:nodirbek@0.0.0.0:5432/calendardb'
-    ports:
-      - 8080:8080
-    depends_on:
-      - postgres
+#  app:
+#    build: .
+#    container_name: app
+#    image: app
+#    environment:
+#      PG_URL: 'postgres://postgres:nodirbek@postgres:5432/calendardb'
+#    ports:
+#      - 8080:8080
+#    depends_on:
+#      - postgres
 
 #  integration:
 #    build:

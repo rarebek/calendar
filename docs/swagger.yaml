@@ -150,7 +150,6 @@ definitions:
         example: message
         type: string
     type: object
-host: localhost:8080
 info:
   contact: {}
   description: You can test methods

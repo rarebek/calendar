@@ -41,14 +41,14 @@ type (
 
 	// Redis -.
 	Redis struct {
-		Address  string `env-required:"true" yaml:"address" env:"REDIS_ADDRESS"`
-		Port     string `env-required:"true" yaml:"host" env:"REDIS_PORT"`
-		Password string `env-required:"true" yaml:"password" env:"REDIS_PASSWORD"`
-		Database int    `env-required:"true" yaml:"database" env:"REDIS_DATABASE"`
+		Address  string `yaml:"address" env:"REDIS_ADDRESS"`
+		Port     string `yaml:"host" env:"REDIS_PORT"`
+		Password string `yaml:"password" env:"REDIS_PASSWORD"`
+		Database int    `yaml:"database" env:"REDIS_DATABASE"`
 	}
 
 	Token struct {
-		Secret string `env-required:"true" yaml:"secret" env:"TOKEN_SECRET"`
+		Secret string `yaml:"secret" env:"TOKEN_SECRET"`
 	}
 )
 
