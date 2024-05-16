@@ -1,0 +1,56 @@
+version: '3.9'
+services:
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'nodirbek'
+      POSTGRES_DB: 'calendardb'
+    ports:
+      - 5432:5432
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - "6279:6279"
+
+  minio:
+    container_name: minio
+    image: docker.io/bitnami/minio:2022
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - 'minio_data:/data'
+    environment:
+      - MINIO_ROOT_USER=nodirbek
+      - MINIO_ROOT_PASSWORD=nodirbek
+      - MINIO_DEFAULT_BUCKETS=files
+
+  app:
+    build: .
+    container_name: app
+    image: app
+    environment:
+      PG_URL: 'postgres://postgres:nodirbek@0.0.0.0:5432/calendardb'
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+
+#  integration:
+#    build:
+#      context: .
+#      dockerfile: integration-test/Dockerfile
+#    container_name: integration
+#    image: integration
+#    depends_on:
+#      - app
+
+volumes:
+  pg-data:
+  minio_data:
